@@ -1,0 +1,48 @@
+﻿<Page x:Class="ZZZ_Character_Wish_Sim.OtherPages.Banner3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZZZ_Character_Wish_Sim.OtherPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Banner3"
+      Background="GreenYellow">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Column="1" Content="This is Banner 3 - NON LIMITED BANNER (CAN PULL BASIC 5 STARS)" HorizontalAlignment="Left" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+
+
+        <TextBlock Name="banner3sRankCounter" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="29" Width="450" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="3" Margin="0,61,0,0"/>
+        <TextBlock Name="banner3aRankCounter" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="450" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="3" Margin="0,22,0,0"/>
+
+
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="6" Background="Black"/>
+
+        <Image Name="roll1" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\wish1button.png" MouseLeftButtonDown="RollOnceBanner3"/>
+        <Image Name="roll10" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\wish10button.png" MouseLeftButtonDown="RollTenBanner3"/>
+
+
+
+    </Grid>
+</Page>
