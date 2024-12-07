@@ -11,6 +11,12 @@ namespace ZZZ_Character_Wish_Sim
     {
         public RewardDB() { }
 
+
+        // DB Creation queries
+        // Tables for Weapons and Characters
+        // Tables only have reward name, the reward tier (3 or B, 4 or A, and 5 or S), and typings
+        // Actual queries to these tables ususally only pull in reward name and image path
+
         private string createWeaponsTableQuery = @"
                         CREATE TABLE IF NOT EXISTS WeaponRewards
                             (id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,31 +77,32 @@ namespace ZZZ_Character_Wish_Sim
 
                 var charRewards = new (string characterName, int rewardTier, string combatType, string element, string imagePath)[]
                 {
-                    ("Anby", 4, "Stun", "Electric", " "),
-                    ("Piper", 4, "Attack", "Physical", " "),
-                    ("Billy", 4, "Attack", "Physical", " "),
-                    ("Ben", 4, "Defense", "Fire", " "),
-                    ("Corin", 4, "Attack", "Physical", " "),
-                    ("Anton", 4, "Attack", "Physical", " "),
-                    ("Seth", 4, "Defense", "Electric", " "),
-                    ("Soukaku", 4, "Support", "Ice", " "),
-                    ("Lucy", 4, "Support", "Fire", " "),
-                    ("Nicole", 4, "Support", "Ether", " "),
-                    ("Caesar", 5, "Defense", "Physical", " "),
-                    ("Yanagi", 5, "Anomaly", "Electric", " "),
-                    ("Burnice", 5, "Anomaly", "Fire", " "),
-                    ("Zhu Yuan", 5, "Attack", "Ether", " "),
-                    ("Jane Doe", 5, "Attack", "Physical", " "),
-                    ("Ellen Joe", 5, "Attack", "Ice", " "),
-                    ("Qingyi", 5, "Stun", "Electric", " "),
-                    ("Lighter", 5, "Stun", " Fire", " "),
-                    ("Lyacon", 5, "Stun", "Ice", " "),
-                    ("Grace", 5, "Anomaly", "Electric", " "),
-                    ("Soldier 11", 5, "Attack", "Fire", " "),
-                    ("Koleda", 5, "Stun", "Fire", " "),
-                    ("Rina", 5, "Support", "Electric", " "),
-                    ("Nekomata", 5, "Attack", "Physical", " ")
+                    ("Anby", 4, "Stun", "Electric", "pack://application:,,,/Resources/Images/Agent_Anby_Demara_Icon.png"),
+                    ("Piper", 4, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Piper_Wheel_Icon.png"),
+                    ("Billy", 4, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Billy_Kid_Icon.png"),
+                    ("Ben", 4, "Defense", "Fire", "pack://application:,,,/Resources/Images/Agent_Anby_Demara_Icon.png"),
+                    ("Corin", 4, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Corin_Wickes_Icon.png"),
+                    ("Anton", 4, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Anton_Ivannov_Icon.png"),
+                    ("Seth", 4, "Defense", "Electric", "pack://application:,,,/Resources/Images/Agent_Seth_Lowell_Icon.png"),
+                    ("Soukaku", 4, "Support", "Ice", "pack://application:,,,/Resources/Images/sokauku.png"),
+                    ("Lucy", 4, "Support", "Fire", "pack://application:,,,/Resources/Images/Agent_Luciana_de_Montefio_Icon.png"),
+                    ("Nicole", 4, "Support", "Ether", "pack://application:,,,/Resources/Images/Agent_Nicole_Demara_Icon.png"),
+                    ("Caesar", 5, "Defense", "Physical", "pack://application:,,,/Resources/Images/Agent_Caesar_King_Icon.png"),
+                    ("Yanagi", 5, "Anomaly", "Electric", "pack://application:,,,/Resources/Images/Agent_Tsukishiro_Yanagi_Icon.png"),
+                    ("Burnice", 5, "Anomaly", "Fire", "pack://application:,,,/Resources/Images/Agent_Burnice_White_Icon.png"),
+                    ("Zhu Yuan", 5, "Attack", "Ether", "pack://application:,,,/Resources/Images/Agent_Zhu_Yuan_Icon.png"),
+                    ("Jane Doe", 5, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Jane_Doe_Icon.png"),
+                    ("Ellen Joe", 5, "Attack", "Ice", "pack://application:,,,/Resources/Images/Agent_Ellen_Joe_Icon.png"),
+                    ("Qingyi", 5, "Stun", "Electric", "pack://application:,,,/Resources/Images/Agent_Qingyi_Icon.png"),
+                    ("Lighter", 5, "Stun", " Fire", "pack://application:,,,/Resources/Images/Agent_Lighter_Icon.png"),
+                    ("Lyacon", 5, "Stun", "Ice", "pack://application:,,,/Resources/Images/Agent_Von_Lycaon_Icon.png"),
+                    ("Grace", 5, "Anomaly", "Electric", "pack://application:,,,/Resources/Images/Agent_Grace_Howard_Icon.png"),
+                    ("Soldier 11", 5, "Attack", "Fire", "pack://application:,,,/Resources/Images/Agent_Soldier_11_Icon.png"),
+                    ("Koleda", 5, "Stun", "Fire", "pack://application:,,,/Resources/Images/Agent_Koleda_Belobog_Icon.png"),
+                    ("Rina", 5, "Support", "Electric", "pack://application:,,,/Resources/Images/Agent_Alexandrina_Sebastiane_Icon.png"),
+                    ("Nekomata", 5, "Attack", "Physical", "pack://application:,,,/Resources/Images/Agent_Nekomiya_Mana_Icon.png")
                 };
+
 
                 var weaponRewards = new (string weaponName, int rewardTier, string combatType, string imagePath)[]
                 {
@@ -152,10 +159,11 @@ namespace ZZZ_Character_Wish_Sim
 
                 };
 
-
+                // Executes create table queries
                 createWeaponsTable.ExecuteNonQuery();
                 createCharactersTable.ExecuteNonQuery();
 
+                // Loops through all items in charRewards and adds the specific values to the characters table
                 foreach (var reward in charRewards)
                 {
                     insertIntoCharactersTable.Parameters.Clear();
@@ -168,7 +176,7 @@ namespace ZZZ_Character_Wish_Sim
 
                 }
 
-
+                // Loops through all items in weaponRewards and adds the specific values to the weapons table
                 foreach (var reward in weaponRewards)
                 {
 
@@ -195,10 +203,10 @@ namespace ZZZ_Character_Wish_Sim
 
 
 
-        public string GetRandom3Star()
+        public (string, string) GetRandom3Star()
         {
 
-            string query = "SELECT reward_name FROM WeaponRewards WHERE reward_tier = 3 ORDER BY RANDOM() LIMIT 1;";
+            string query = "SELECT reward_name, reward_image_path FROM WeaponRewards WHERE reward_tier = 3 ORDER BY RANDOM() LIMIT 1;";
 
             string databasePath = "Data Source=zenless_rewards.db";
 
@@ -209,21 +217,30 @@ namespace ZZZ_Character_Wish_Sim
 
                 SqliteCommand get3Stars = new SqliteCommand(query, connection);
 
-                string random3Star = (string)get3Stars.ExecuteScalar();
+                SqliteDataReader reader = get3Stars.ExecuteReader();
 
+                if (reader.Read())
+                {
+
+                    string weaponName = reader.GetString(0);
+                    string weaponImgPath = reader.GetString(1);
+
+                    return (weaponName, weaponImgPath);
+
+                }
 
                 connection.Close();
 
-                return random3Star;
+                return (null, null);
 
             }
 
         }
 
-        public string GetRandom4StarWeapon()
+        public (string, string) GetRandom4StarWeapon()
         {
 
-            string query = "SELECT reward_name FROM WeaponRewards WHERE reward_tier = 4 ORDER BY RANDOM() LIMIT 1;";
+            string query = "SELECT reward_name, reward_image_path FROM WeaponRewards WHERE reward_tier = 4 ORDER BY RANDOM() LIMIT 1;";
 
             string databasePath = "Data Source=zenless_rewards.db";
 
@@ -234,21 +251,31 @@ namespace ZZZ_Character_Wish_Sim
 
                 SqliteCommand get4StarWeapons = new SqliteCommand(query, connection);
 
-                string random4StarWeapon = (string)get4StarWeapons.ExecuteScalar();
+                SqliteDataReader reader = get4StarWeapons.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    string weaponName = reader.GetString(0);
+                    string weaponImgPath = reader.GetString(1);
+
+                    return (weaponName, weaponImgPath);
+
+                }
 
 
                 connection.Close();
 
-                return random4StarWeapon;
+                return (null, null);
 
             }
 
         }
 
-        public string GetRandom5StarWeapon()
+        public (string, string) GetRandom5StarWeapon()
         {
 
-            string query = "SELECT reward_name FROM WeaponRewards WHERE reward_tier = 5 ORDER BY RANDOM() LIMIT 1;";
+            string query = "SELECT reward_name, reward_image_path FROM WeaponRewards WHERE reward_tier = 5 ORDER BY RANDOM() LIMIT 1;";
 
             string databasePath = "Data Source=zenless_rewards.db";
 
@@ -259,12 +286,22 @@ namespace ZZZ_Character_Wish_Sim
 
                 SqliteCommand get5StarWeapons = new SqliteCommand(query, connection);
 
-                string random5StarWeapon = (string)get5StarWeapons.ExecuteScalar();
+                SqliteDataReader reader = get5StarWeapons.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    string weaponName = reader.GetString(0);
+                    string weaponImgPath = reader.GetString(1);
+
+                    return (weaponName, weaponImgPath);
+
+                }
 
 
                 connection.Close();
 
-                return random5StarWeapon;
+                return (null, null);
 
             }
 
@@ -280,10 +317,10 @@ namespace ZZZ_Character_Wish_Sim
 
 
 
-        public string GetRandom4StarCharacter()
+        public (string, string) GetRandom4StarCharacter()
         {
 
-            string query = "SELECT reward_name FROM CharacterRewards WHERE reward_tier = 4 ORDER BY RANDOM() LIMIT 1;";
+            string query = "SELECT reward_name, reward_image_path FROM CharacterRewards WHERE reward_tier = 4 ORDER BY RANDOM() LIMIT 1;";
 
             string databasePath = "Data Source=zenless_rewards.db";
 
@@ -294,21 +331,30 @@ namespace ZZZ_Character_Wish_Sim
 
                 SqliteCommand get4StarCharacters = new SqliteCommand(query, connection);
 
-                string random4StarCharacter = (string)get4StarCharacters.ExecuteScalar();
+                SqliteDataReader reader = get4StarCharacters.ExecuteReader();
 
+                if (reader.Read())
+                {
+
+                    string characterName = reader.GetString(0);
+                    string characterImgPath = reader.GetString(1);
+
+                    return (characterName, characterImgPath);
+
+                }
 
                 connection.Close();
 
-                return random4StarCharacter;
+                return (null, null);
 
             }
 
         }
 
-        public string GetRandom5StarCharacter()
+        public (string, string) GetRandom5StarCharacter()
         {
 
-            string query = "SELECT reward_name FROM CharacterRewards WHERE reward_tier = 5 ORDER BY RANDOM() LIMIT 1;";
+            string query = "SELECT reward_name, reward_image_path FROM CharacterRewards WHERE reward_tier = 5 ORDER BY RANDOM() LIMIT 1;";
 
             string databasePath = "Data Source=zenless_rewards.db";
 
@@ -319,12 +365,22 @@ namespace ZZZ_Character_Wish_Sim
 
                 SqliteCommand get5StarCharacters = new SqliteCommand(query, connection);
 
-                string random5StarCharacter = (string)get5StarCharacters.ExecuteScalar();
+                SqliteDataReader reader = get5StarCharacters.ExecuteReader();
+
+                if (reader.Read()) { 
+                
+                    string characterName = reader.GetString(0);
+                    string characterImgPath = reader.GetString(1);
+
+
+                    return (characterName, characterImgPath);
+
+                }
 
 
                 connection.Close();
 
-                return random5StarCharacter;
+                return (null, null);
 
             }
 

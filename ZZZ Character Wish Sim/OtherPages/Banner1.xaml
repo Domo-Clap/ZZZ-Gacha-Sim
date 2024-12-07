@@ -6,8 +6,14 @@
       xmlns:local="clr-namespace:ZZZ_Character_Wish_Sim.OtherPages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="Banner1"
-      Background="AliceBlue">
+      Title="Banner1">
+
+    <Page.Background>
+
+        <ImageBrush ImageSource="pack://application:,,,/Resources/Images/banner1Background.png"/>
+
+    </Page.Background>
+
 
     <Grid>
 
@@ -31,16 +37,14 @@
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
-
-        <Label Grid.Column="1" Content="This is Banner 1 - LIMITED BANNER - CAN ONLY PULL LIMITED 5 STARS characters and 3/4 star weaps/characters" HorizontalAlignment="Left" Margin="58,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
-
+        
         <TextBlock Name="banner1sRankCounter" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="29" Width="450" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="3" Margin="0,61,0,0"/>
         <TextBlock Name="banner1aRankCounter" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="450" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="3" Margin="0,22,0,0"/>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="6" Background="Black"/>
-        
-        <Image Name="roll1" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\wish1button.png" MouseLeftButtonDown="RollOnceBanner1"/>
-        <Image Name="roll10" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\wish10button.png" MouseLeftButtonDown="RollTenBanner1"/>
+
+        <Image Name="roll1" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Source="pack://application:,,,/Resources/Images/wish1button.png" MouseLeftButtonDown="RollOnceBanner1"/>
+        <Image Name="roll10" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Source="pack://application:,,,/Resources/Images/wish10button.png" MouseLeftButtonDown="RollTenBanner1"/>
 
         
 

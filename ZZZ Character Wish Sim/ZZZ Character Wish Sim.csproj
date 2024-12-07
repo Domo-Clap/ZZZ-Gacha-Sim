@@ -10,10 +10,87 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Icons\" />
+    <None Remove="Resources\Icons\mainIcon.png" />
+    <None Remove="Resources\Images\backgroundsidepane.png" />
+    <None Remove="Resources\Images\banner1Background.png" />
+    <None Remove="Resources\Images\banner1button.png" />
+    <None Remove="Resources\Images\banner1buttonactive.png" />
+    <None Remove="Resources\Images\banner2Background.png" />
+    <None Remove="Resources\Images\banner2button.png" />
+    <None Remove="Resources\Images\banner2buttonactive.png" />
+    <None Remove="Resources\Images\banner3Background.png" />
+    <None Remove="Resources\Images\banner3button.png" />
+    <None Remove="Resources\Images\banner3buttonactive.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Alexandrina_Sebastiane_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Burnice_White_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Caesar_King_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Ellen_Joe_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Grace_Howard_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Jane_Doe_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Koleda_Belobog_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Lighter_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Nekomiya_Mana_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Qingyi_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Soldier_11_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Tsukishiro_Yanagi_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Von_Lycaon_Icon.png" />
+    <None Remove="Resources\Images\FiveStarChars\Agent_Zhu_Yuan_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Anby_Demara_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Anton_Ivanov_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Ben_Bigger_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Billy_Kid_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Corin_Wickes_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Luciana_de_Montefio_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Nicole_Demara_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Piper_Wheel_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\Agent_Seth_Lowell_Icon.png" />
+    <None Remove="Resources\Images\FourStarChars\sokauku.png" />
+    <None Remove="Resources\Images\wish10button.png" />
+    <None Remove="Resources\Images\wish1button.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\mainIcon.png" />
+    <Resource Include="Resources\Images\backgroundsidepane.png" />
+    <Resource Include="Resources\Images\banner1Background.png" />
+    <Resource Include="Resources\Images\banner1button.png" />
+    <Resource Include="Resources\Images\banner1buttonactive.png" />
+    <Resource Include="Resources\Images\banner2Background.png" />
+    <Resource Include="Resources\Images\banner2button.png" />
+    <Resource Include="Resources\Images\banner2buttonactive.png" />
+    <Resource Include="Resources\Images\banner3Background.png" />
+    <Resource Include="Resources\Images\banner3button.png" />
+    <Resource Include="Resources\Images\banner3buttonactive.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Alexandrina_Sebastiane_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Burnice_White_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Caesar_King_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Ellen_Joe_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Grace_Howard_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Jane_Doe_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Koleda_Belobog_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Lighter_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Nekomiya_Mana_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Qingyi_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Soldier_11_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Tsukishiro_Yanagi_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Von_Lycaon_Icon.png" />
+    <Resource Include="Resources\Images\FiveStarChars\Agent_Zhu_Yuan_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Anby_Demara_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Anton_Ivanov_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Ben_Bigger_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Billy_Kid_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Corin_Wickes_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Luciana_de_Montefio_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Nicole_Demara_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Piper_Wheel_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\Agent_Seth_Lowell_Icon.png" />
+    <Resource Include="Resources\Images\FourStarChars\sokauku.png" />
+    <Resource Include="Resources\Images\wish10button.png" />
+    <Resource Include="Resources\Images\wish1button.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Animations\" />
-    <Folder Include="Resources\Images\FourStarChars\" />
-    <Folder Include="Resources\Images\FiveStarChars\" />
     <Folder Include="Resources\Images\FourStarWeaps\" />
     <Folder Include="Resources\Images\FiveStarWeaps\" />
     <Folder Include="Resources\Images\ThreeStarWeaps\" />

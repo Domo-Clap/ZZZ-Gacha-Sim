@@ -15,6 +15,8 @@ namespace ZZZ_Character_Wish_Sim
             base.OnStartup(e);
 
 
+            // Env variables to keep track of each banners roll counts
+            // These vars get updated each time a roll happens
             Application.Current.Properties["banner1RollsUntilA"] = 10;
             Application.Current.Properties["banner1RollsUntilS"] = 90;
             Application.Current.Properties["banner1RollCount"] = 0;

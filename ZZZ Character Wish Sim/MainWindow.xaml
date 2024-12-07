@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZZZ_Character_Wish_Sim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200"
-        Background="LightGray">
+        Title="Zenless Zone Zero Wishing Sim" Height="800" Width="1200"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        Icon="pack://application:,,,/Resources/Icons/mainIcon.png">
     <Grid>
 
 
@@ -34,9 +36,9 @@
 
         <Image Name="backgroundSidePanelImage" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\backgroundsidepane.png"/>
 
-        <Image Name="bBtn1" Grid.Row="0" Grid.Column="0" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\banner1button.png" MouseLeftButtonDown="NavigateToBanner1" Margin="0,11,0,89" Grid.RowSpan="2"/>
-        <Image Name="bBtn2" Grid.Row="1" Grid.Column="0" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\banner2button.png" MouseLeftButtonDown="NavigateToBanner2"/>
-        <Image Name="bBtn3" Grid.Row="2" Grid.Column="0" Source="C:\Users\Dominic\source\repos\ZZZ Character Wish Sim\Resources\Images\banner3button.png" MouseLeftButtonDown="NavigateToBanner3"/>
+        <Image Name="bBtn1" Grid.Row="0" Grid.Column="0" Source="pack://application:,,,/Resources/Images/banner1button.png" MouseLeftButtonDown="NavigateToBanner1" Margin="0,11,0,89" Grid.RowSpan="2"/>
+        <Image Name="bBtn2" Grid.Row="1" Grid.Column="0" Source="pack://application:,,,/Resources/Images/banner2button.png" MouseLeftButtonDown="NavigateToBanner2"/>
+        <Image Name="bBtn3" Grid.Row="2" Grid.Column="0" Source="pack://application:,,,/Resources/Images/banner3button.png" MouseLeftButtonDown="NavigateToBanner3"/>
 
 
         <StackPanel Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1">

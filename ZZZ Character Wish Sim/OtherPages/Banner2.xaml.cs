@@ -14,6 +14,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZZZ_Character_Wish_Sim;
 
+// --------------------------------------------------------------------------------------------------------------------------------
+//LIMITED WEAPONS BANNER
+//ONLY 3 STAR WEAPONS, 4 STAR WEAPONS, AND 5 STAR WEAPONS
+
+// Page for the Standard banner
+// Has different roll counts and reward possibilities
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
 namespace ZZZ_Character_Wish_Sim.OtherPages
 {
     /// <summary>
@@ -22,13 +31,19 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
     public partial class Banner2 : Page
     {
 
-        int banner2RollCount = 0;
+        // General varaibles used to track roll counts
+        // Used when we want to determine if in soft pity or are confirmed for a 4/5 star reward
+        int banner2RollCount;
+        int banner2RollsUntilS;
+        int banner2RollsUntilA;
+        int banner2SoftPityCount;
 
-        int banner2RollsUntilS = 90;
-        int banner2RollsUntilA = 10;
-        int banner2SoftPityCount = 0;
-
+        // DB class var
         private RewardDB rewardDB;
+
+
+        // Page Initializer
+        // Gets the env values for banner 1 roll counts. This is the way we keep track of banner specific roll counts when moving off the page.
 
         public Banner2()
         {
@@ -44,6 +59,11 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
 
         }
 
+
+        // --------------------------------------------------------------------------------------------------------------------------------
+        // Updates our app/env vars to whatever the new value is after a roll occurs
+        // --------------------------------------------------------------------------------------------------------------------------------
+
         private void UpdateRollCounts()
         {
 
@@ -54,6 +74,13 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
 
         }
 
+
+        // --------------------------------------------------------------------------------------------------------------------------------
+        // Roll 1 function!
+        // Gets 1 random choice from the db and opens a dialog window after the roll completes
+
+        // IDEA: Could possibly delete the rollOnce function and pass in another var to the Roll10 function to make it roll a certain amount of times. Would save a lot of line space
+        // --------------------------------------------------------------------------------------------------------------------------------
 
         public void RollOnceBanner2(object sender, MouseButtonEventArgs e)
         {
@@ -67,7 +94,9 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
             if (banner2RollsUntilA == 1)
             {
 
-                MessageBox.Show("You pulled a 4 Star");
+                var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+
+                MessageBox.Show($"You pulled a 4 Star Weapon: {result}, IMAGE: {rewardPath}");
 
                 Console.WriteLine("You pulled a 4 Star");
                 banner2RollCount += 1;
@@ -83,7 +112,11 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
             else if (banner2RollsUntilS == 1)
             {
 
-                Console.WriteLine("You pulled a 5 Star");
+                var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+
+                MessageBox.Show($"You pulled a 5 Star Weapon: {result}, IMAGE: {rewardPath}");
+
+                Console.WriteLine($"You pulled a 5 Star Weapon: {result}, IMAGE: {rewardPath}");
                 banner2RollCount = 0;
 
                 banner2RollsUntilA = 10;
@@ -100,7 +133,10 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
 
                 if (rollChance <= 0.006)
                 {
-                    MessageBox.Show("You pulled a 5 Star");
+
+                    var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+
+                    MessageBox.Show($"You pulled a 5 Star Weapon: {result}, IMAGE: {rewardPath}");
 
                     Console.WriteLine("You pulled a 5 Star");
                     banner2RollCount = 0;
@@ -115,7 +151,10 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
 
                 else if (rollChance > 0.006 && rollChance <= 0.078)
                 {
-                    MessageBox.Show("You pulled a 4 Star");
+
+                    var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+
+                    MessageBox.Show($"You pulled a 4 Star Weapon: {result}, IMAGE: {rewardPath}");
 
                     Console.WriteLine("You pulled a 4 Star");
                     banner2RollCount += 1;
@@ -132,7 +171,7 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                 {
 
 
-                    string result = rewardDB.GetRandom3Star();
+                    var (result, rewardPath) = rewardDB.GetRandom3Star();
 
                     MessageBox.Show($"You pulled a 3 Star. {result}");
 
@@ -158,15 +197,14 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
 
                 banner2SoftPityCount = Math.Abs(74 - banner2RollCount);
 
-
-
-
                 Console.WriteLine($"You are in soft pity currently! Your roll count is currently at: {banner2RollCount}");
 
                 if (rollChance <= 0.006 + (banner2SoftPityCount + 10))
                 {
 
-                    MessageBox.Show("You pulled a 5 Star");
+                    var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+
+                    MessageBox.Show($"You pulled a 5 Star Weapon: {result}, IMAGE: {rewardPath}");
 
                     Console.WriteLine("You pulled a 5 Star");
                     banner2RollCount = 0;
@@ -181,7 +219,9 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                 else if (rollChance > 0.006 && rollChance <= 0.078)
                 {
 
-                    MessageBox.Show("You pulled a 4 Star");
+                    var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+
+                    MessageBox.Show($"You pulled a 4 Star Weapon: {result}, IMAGE: {rewardPath}");
 
                     Console.WriteLine("You pulled a 4 Star");
                     banner2RollCount += 1;
@@ -197,7 +237,8 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                 else
                 {
 
-                    string result = rewardDB.GetRandom3Star();
+                    var (result, rewardPath) = rewardDB.GetRandom3Star();
+
                     MessageBox.Show($"You pulled a 3 Star. {result}");
 
                     Console.WriteLine("You pulled a 3 Star");
@@ -219,6 +260,14 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
         }
 
 
+        // --------------------------------------------------------------------------------------------------------------------------------
+        // Roll 10 function!
+        // Gets 10 random choices from the db and stores them in a list
+        // Opens a dialog window after all 10 rolls complete
+
+        // IDEA: Could possibly delete the rollOnce function and pass in another var to this function to make it roll a certain amount of times. Would save a lot of line space
+        // --------------------------------------------------------------------------------------------------------------------------------
+
         public void RollTenBanner2(object sender, MouseButtonEventArgs e)
         {
 
@@ -236,23 +285,9 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                 if (banner2RollsUntilA == 1)
                 {
 
-                    Random weapOrChar = new Random();
+                    var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+                    rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
 
-                    if (weapOrChar.Next(1, 3) == 1)
-                    {
-
-                        string result = rewardDB.GetRandom4StarWeapon();
-                        rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
-
-                    }
-
-                    else
-                    {
-
-                        string result = rewardDB.GetRandom4StarCharacter();
-                        rollResults[i] = $"You pulled a 4 Star Character {result}\n";
-
-                    }
 
                     banner2RollCount += 1;
 
@@ -267,23 +302,8 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                 else if (banner2RollsUntilS == 1)
                 {
 
-                    Random weapOrChar = new Random();
-
-                    if (weapOrChar.Next(1, 3) == 1)
-                    {
-
-                        string result = rewardDB.GetRandom5StarWeapon();
-                        rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
-
-                    }
-
-                    else
-                    {
-
-                        string result = rewardDB.GetRandom5StarCharacter();
-                        rollResults[i] = $"You pulled a 5 Star Character {result}\n";
-
-                    }
+                    var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+                    rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
 
                     banner2RollCount = 0;
 
@@ -302,23 +322,8 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     if (rollChance <= 0.006)
                     {
 
-                        Random weapOrChar = new Random();
-
-                        if (weapOrChar.Next(1, 3) == 1)
-                        {
-
-                            string result = rewardDB.GetRandom5StarWeapon();
-                            rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
-
-                        }
-
-                        else
-                        {
-
-                            string result = rewardDB.GetRandom5StarCharacter();
-                            rollResults[i] = $"You pulled a 5 Star Character {result}\n";
-
-                        }
+                        var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+                        rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
 
                         banner2RollCount = 0;
 
@@ -334,23 +339,8 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     else if (rollChance > 0.006 && rollChance <= 0.078)
                     {
 
-                        Random weapOrChar = new Random();
-
-                        if (weapOrChar.Next(1, 3) == 1)
-                        {
-
-                            string result = rewardDB.GetRandom4StarWeapon();
-                            rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
-
-                        }
-
-                        else
-                        {
-
-                            string result = rewardDB.GetRandom4StarCharacter();
-                            rollResults[i] = $"You pulled a 4 Star Character {result}\n";
-
-                        }
+                        var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+                        rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
 
                         Console.WriteLine("You pulled a 4 Star");
 
@@ -367,7 +357,7 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     else
                     {
 
-                        string result = rewardDB.GetRandom3Star();
+                        var (result, rewardPath) = rewardDB.GetRandom3Star();
 
                         Console.WriteLine("You pulled a 3 Star");
 
@@ -398,23 +388,8 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     if (rollChance <= 0.006 + (banner2SoftPityCount + 10))
                     {
 
-                        Random weapOrChar = new Random();
-
-                        if (weapOrChar.Next(1, 3) == 1)
-                        {
-
-                            string result = rewardDB.GetRandom5StarWeapon();
-                            rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
-
-                        }
-
-                        else
-                        {
-
-                            string result = rewardDB.GetRandom5StarCharacter();
-                            rollResults[i] = $"You pulled a 5 Star Character {result}\n";
-
-                        }
+                        var (result, rewardPath) = rewardDB.GetRandom5StarWeapon();
+                        rollResults[i] = $"You pulled a 5 Star Weapon {result}\n";
 
                         banner2RollCount = 0;
 
@@ -428,23 +403,10 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     else if (rollChance > 0.006 && rollChance <= 0.078)
                     {
 
-                        Random weapOrChar = new Random();
+                        
 
-                        if (weapOrChar.Next(1, 3) == 1)
-                        {
-
-                            string result = rewardDB.GetRandom4StarWeapon();
-                            rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
-
-                        }
-
-                        else
-                        {
-
-                            string result = rewardDB.GetRandom4StarCharacter();
-                            rollResults[i] = $"You pulled a 4 Star Character {result}\n";
-
-                        }
+                        var (result, rewardPath) = rewardDB.GetRandom4StarWeapon();
+                        rollResults[i] = $"You pulled a 4 Star Weapon {result}\n";
 
                         banner2RollCount += 1;
 
@@ -459,7 +421,7 @@ namespace ZZZ_Character_Wish_Sim.OtherPages
                     else
                     {
 
-                        string result = rewardDB.GetRandom3Star();
+                        var (result, rewardPath) = rewardDB.GetRandom3Star();
 
                         Console.WriteLine("You pulled a 3 Star");
 
